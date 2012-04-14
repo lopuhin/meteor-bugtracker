@@ -1,0 +1,18 @@
+<template name="list">
+<h1>{{ project }}</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{# each tickets }}
+    <tr>
+      <td>{{ title }}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</template>

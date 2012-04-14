@@ -1,0 +1,47 @@
+<template name="sidebar">
+
+<ul class="nav nav-list">
+  <li class="nav-header">
+  Trackers
+  </li>
+
+  <li class="active"><a href="#">All</a></li>
+
+  <li><a href="#">Bugs</a></li>
+  <li><a href="#">Tasks</a></li>
+
+  <li class="divider"></li>
+</ul>
+
+<ul class="nav nav-list">
+  <li class="nav-header">
+  Projects
+  </li>
+
+  <li class="{{ all_chosen_class }}">
+  <a id="choose_all_projects" href="#">All</a>
+  </li>
+
+  {{#each projects }}
+  {{> sidebar_project }}
+  {{/each}}
+
+  <li class="divider"></li>
+</ul>
+
+<ul class="nav nav-list">
+  <li class="nav-header">
+  People
+  </li>
+
+  <li class="active">
+  <a href="#">All</a>
+  </li>
+
+</ul>
+
+</template>
+
+<template name="sidebar_project">
+<li class="{{ chosen_class }}"><a href="#">{{ name }}</a></li>
+</template>
