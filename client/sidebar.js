@@ -1,36 +1,34 @@
 // Filtering
 
-var setup_filters = function (list_template, item_template, collection, session_field) {
-    // Handle choosing of proper item
-    list_template.items = function () {
-        return collection.find();
-    };
-    list_template.all_chosen_class = function () {
-        return Session.equals(session_field, null) ? 'active' : '';
-    };
-
-    list_template.events = {
-        'click .choose_all': function () {
-            Session.set(session_field, null);
-        }
-    };
-
-    item_template.events = {
-        'click': function (evt) {
-            Session.set(session_field, this._id);
-        }
-    };
-    item_template.chosen_class = function () {
-        return Session.equals(session_field, this._id) ? 'active' : '';
-    };
+Template.sidebar_filter.items = function () {
+    var session_field = this.session_field;
+    return _.map(this.collection.find().fetch(), 
+            function (item) { 
+                return {item: item, session_field: session_field};
+            });
+};
+Template.sidebar_filter.all_chosen_class = function () {
+    return Session.equals(this.session_field, null) ? 'active' : '';
 };
 
-setup_filters(
-        Template.sidebar_project_list, Template.sidebar_project,
-        Projects, 'project_id');
+Template.sidebar_filter.events = {
+    'click .choose_all': function () {
+        Session.set(this.session_field, null);
+    }
+};
 
+Template.sidebar_item.events = {
+    'click': function (evt) {
+        console.log('click', this);
+        Session.set(this.session_field, this.item._id);
+    }
+};
+Template.sidebar_item.chosen_class = function () {
+    return Session.equals(this.session_field, this.item._id) ? 'active' : '';
+};
 
-setup_filters(
-        Template.sidebar_owner_list, Template.sidebar_owner,
-        People, 'owner_id');
+Template.sidebar.sidebar_filters = [
+    {session_field: 'project_id', title: 'Project', collection: Projects},
+    {session_field: 'owner_id', title: 'Owner', collection: People}
+    ];
 

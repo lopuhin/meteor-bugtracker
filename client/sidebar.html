@@ -1,31 +1,15 @@
 <template name="sidebar">
 
-<!--
-<ul class="nav nav-list">
-  <li class="nav-header">
-  Trackers
-  </li>
-
-  <li class="active"><a href="#">All</a></li>
-
-  <li><a href="#">Bugs</a></li>
-  <li><a href="#">Tasks</a></li>
-
-  <li class="divider"></li>
-</ul>
--->
-
-{{> sidebar_project_list }}
-
-{{> sidebar_owner_list }}
+{{# each sidebar_filters }}
+{{> sidebar_filter }}
+{{/each }}
 
 </template>
 
-<template name="sidebar_project_list">
-<!-- FIXME - how to avoid template repetition? -->
+<template name="sidebar_filter">
 <ul class="nav nav-list">
   <li class="nav-header">
-  Project
+  {{ title }}
   </li>
 
   <li class="{{ all_chosen_class }}">
@@ -33,7 +17,7 @@
   </li>
 
   {{#each items }}
-  {{> sidebar_project }}
+  {{> sidebar_item }}
   {{/each}}
 
   <li class="divider"></li>
@@ -41,29 +25,8 @@
 </template>
 
 
-<template name="sidebar_project">
-<li class="{{ chosen_class }}"><a href="#">{{ name }}</a></li>
+<template name="sidebar_item">
+<li class="{{ chosen_class }}"><a href="#">{{ item.name }}</a></li>
 </template>
 
-
-<template name="sidebar_owner_list">
-<ul class="nav nav-list">
-  <li class="nav-header">
-  Owner
-  </li>
-
-  <li class="{{ all_chosen_class }}">
-  <a class="choose_all" href="#">All</a>
-  </li>
-  
-  {{#each items }}
-  {{> sidebar_owner }}
-  {{/each}}
-
-</ul>
-</template>
-
-<template name="sidebar_owner">
-<li class="{{ chosen_class }}"><a href="#">{{ name }}</a></li>
-</template>
 
