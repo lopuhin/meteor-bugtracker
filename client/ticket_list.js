@@ -1,6 +1,19 @@
-Template.ticket_list.project = function () {
-    var project_id = Session.get('project_id');
-    return project_id ? Projects.findOne({_id: project_id}).name : 'All';
+Template.ticket_list.title = function () {
+    var project_id = Session.get('project_id'), owner_id = Session.get('owner_id');
+    var title;
+    if (project_id) {
+        title = Projects.findOne({_id: project_id}).name;
+        if (owner_id) {
+            title += ' owned by ' + People.findOne({_id: owner_id}).name;
+        }
+    } else {
+        if (owner_id) {
+            title = 'Owned by ' + People.findOne({_id: owner_id}).name;
+        } else {
+            title = 'All';
+        }
+    }
+    return title;
 };
 
 Template.ticket_list.viewing_all_projects = function () {
@@ -21,6 +34,7 @@ Template.ticket_list.tickets = function () {
 };
 
 Template.ticket_in_list.viewing_all_projects = Template.ticket_list.viewing_all_projects;
+
 Template.ticket_in_list.project = function () {
     return Projects.findOne({_id: this.project_id}).name;
 };
