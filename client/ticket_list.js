@@ -4,7 +4,7 @@ Template.ticket_list.title = function () {
     if (project_id) {
         title = Projects.findOne({_id: project_id}).name;
         if (owner_id) {
-            title += ' owned by ' + People.findOne({_id: owner_id}).name;
+            title += ', owned by ' + People.findOne({_id: owner_id}).name;
         }
     } else {
         if (owner_id) {

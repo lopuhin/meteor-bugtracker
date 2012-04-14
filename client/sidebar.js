@@ -19,7 +19,6 @@ Template.sidebar_filter.events = {
 
 Template.sidebar_item.events = {
     'click': function (evt) {
-        console.log('click', this);
         Session.set(this.session_field, this.item._id);
     }
 };
