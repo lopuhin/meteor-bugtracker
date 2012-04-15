@@ -43,3 +43,9 @@ Template.ticket_in_list.owner = function () {
     return owner ? owner.name : '';
 };
 
+Template.ticket_in_list.events = {
+    'click': function () {
+        Session.set('ticket_id', this._id);
+    }
+};
+

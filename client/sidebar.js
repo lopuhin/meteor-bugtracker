@@ -14,12 +14,14 @@ Template.sidebar_filter.all_chosen_class = function () {
 Template.sidebar_filter.events = {
     'click .choose_all': function () {
         Session.set(this.session_field, null);
+        Session.set('ticket_id', null);
     }
 };
 
 Template.sidebar_item.events = {
     'click': function (evt) {
         Session.set(this.session_field, this.item._id);
+        Session.set('ticket_id', null);
     }
 };
 Template.sidebar_item.chosen_class = function () {

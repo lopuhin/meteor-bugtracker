@@ -37,7 +37,11 @@
 
 
 <template name="main">
+{{# if viewing_ticket }}
+{{> ticket_detail }}
+{{ else }}
 {{> ticket_list }}
+{{/if }}
 </template>
 
 
