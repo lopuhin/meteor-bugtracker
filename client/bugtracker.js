@@ -32,7 +32,8 @@ Template.main.page_name_is = function (page_name) {
 var name_getter = function (collection, field) {
     return function () {
         if (this[field]) {
-            return collection.findOne({_id: this[field]}).name;
+            var obj = collection.findOne({_id: this[field]});
+            return obj ? obj.name : '';
         }
         return '';
     };

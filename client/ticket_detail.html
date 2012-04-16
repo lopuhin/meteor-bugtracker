@@ -48,9 +48,11 @@
       </label>
       <div class="controls">
         <select id="owner_id_field">
-          <option value="">nobody</option>
+          <option {{ no_owner_selected }}>nobody</option>
           {{# each owners }}
-          <option value="{{ _id }}">{{ name }}</option>
+          <option value="{{ _id }}" {{ owner_is_selected }}>
+          {{ name }}
+          </option>
           {{/each }}
         </select>
       </div>
