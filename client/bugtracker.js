@@ -2,7 +2,7 @@
 //
 // {name}
 Projects = new Meteor.Collection('Projects');
-// {project_id, owner_id, title, body, comments: [{user_id, text, timestamp}]}
+// {project_id, owner_id, title, body, comments: [{author_id, text, timestamp}]}
 Tickets = new Meteor.Collection('Tickets');
 // {login, name}
 People = new Meteor.Collection('People');

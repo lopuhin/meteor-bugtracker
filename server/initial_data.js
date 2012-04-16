@@ -11,6 +11,10 @@ Meteor.startup(function () {
         var tickets = [
             {title: 'Ticket 1 title',
              body: 'A really long text',
+             comments: [
+                {'author_id': people[0], 'text': 'I\'m the first to comment'},
+                {'author_id': people[1], 'text': 'Do it yourself'}
+             ],
              project_id: projects[0]},
             {title: 'Prodbez regression tests',
              body: 'Another really really really long text',
