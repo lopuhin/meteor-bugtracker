@@ -4,13 +4,13 @@
     <div class="container">
 
       <a class="brand" href="#">BugTracker</a>
-      <!--
+
       <ul class="nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        {{# each nav_links }}
+        {{> nav_link }}
+        {{/each }}
       </ul>
-      -->
+
 
       <form class="navbar-search pull-right">
         <input type="text" class="search-query" placeholder="Search">
@@ -19,4 +19,8 @@
     </div>
   </div>
 </div>
+</template>
+
+<template name="nav_link">
+<li class="{{ is_active }}"><a href="#">{{ title }}</a></li>
 </template>

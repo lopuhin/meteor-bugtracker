@@ -35,13 +35,8 @@ Template.ticket_list.tickets = function () {
 
 Template.ticket_in_list.viewing_all_projects = Template.ticket_list.viewing_all_projects;
 
-Template.ticket_in_list.project = function () {
-    return Projects.findOne({_id: this.project_id}).name;
-};
-Template.ticket_in_list.owner = function () { 
-    var owner = People.findOne({_id: this.owner_id});
-    return owner ? owner.name : '';
-};
+Template.ticket_in_list.project = name_getter(Projects, 'project_id');
+Template.ticket_in_list.owner = name_getter(People, 'owner_id');
 
 Template.ticket_in_list.events = {
     'click': function () {

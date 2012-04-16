@@ -1,7 +1,18 @@
+<template name="ticket_detail_page">
+{{> ticket_detail }}
+</template>
+
 <template name="ticket_detail">
 {{# with ticket }}
 
 <h1>{{ title }}</h1>
+
+<dl class="dl-horizontal">
+  <dt>Project</dt>
+  <dd>{{ project }}</dd>
+  <dt>Owner</dt>
+  <dd>{{ owner }}</dd>
+</dl>
 
 <p>{{ body }}</p>
 

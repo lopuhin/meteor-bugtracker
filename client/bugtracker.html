@@ -8,16 +8,7 @@
   {{> navbar }}
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span2">
-        <div class="well">
-        {{> sidebar }}
-        </div>
-      </div>
-      <div class="span10">
-        <div class="well">
-        {{> main }}
-        </div>
-      </div>
+      {{> main }}
     </div>
   </div>
   <!-- Placed at the end of the document so the pages load faster -->
@@ -37,11 +28,16 @@
 
 
 <template name="main">
+
+{{# if page_name_is "list_page" }}
 {{# if viewing_ticket }}
-{{> ticket_detail }}
+{{> ticket_detail_page }}
 {{ else }}
-{{> ticket_list }}
+{{> ticket_list_page }}
 {{/if }}
+{{/if }}
+
+
 </template>
 
 
