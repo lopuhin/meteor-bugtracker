@@ -1,11 +1,11 @@
 Meteor.startup(function () {
     if (Projects.find().count() == 0) {
 
-        var projects = _.map(['NetDB', 'Prodbez', 'Vet'],
+        var projects = _.map(['NetDB', 'Lib', 'Admin'],
             function (name) { return Projects.insert({name: name}) });
         var people = _.map([
-            {login: 'kostia', name: 'Костя Лопухин'},
-            {login: 'alex', name: 'Алексей Федоров'}
+            {login: 'kostia', name: 'Kostia'},
+            {login: 'alex', name: 'Alex'}
             ], function (user) { return People.insert(user); });
 
         var tickets = [
